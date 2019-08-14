@@ -1,5 +1,5 @@
 <li>
-    <a href="<?= \yii\helpers\Url::to(['category/view', 'id' => $category['id']]) ?>">
+    <a href="<?= \yii\helpers\Url::to(['category/view', 'name' => strtolower($category['name'])]) ?>">
         <?= $category['name']?>
         <?php if( isset($category['childs']) ): ?>
             <span class="badge pull-right"><i class="fa fa-plus"></i></span>

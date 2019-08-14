@@ -62,7 +62,7 @@ LteAppAsset::register($this);
             <div class="row">
                 <div class="col-sm-4">
                     <div class="logo pull-left">
-                        <a href="index.html"><img src="/images/home/logo.png" alt="" /></a>
+                        <a href="<?= \yii\helpers\Url::home()?>"><img src="/images/home/logo.png" alt="" /></a>
                     </div>
                     <div class="btn-group pull-right">
                         <div class="btn-group">

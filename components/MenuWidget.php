@@ -40,7 +40,7 @@ class MenuWidget extends Widget
         $this->tree = $this->getTree();
         $this->menuHtml = $this->getMenuHtml($this->tree);
         // set cache
-        Yii::$app->cache->set('menu', $this->menuHtml, 60);
+        //Yii::$app->cache->set('menu', $this->menuHtml, 60);
         return $this->menuHtml;
     }
 
