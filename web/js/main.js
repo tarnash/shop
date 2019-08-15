@@ -6,6 +6,82 @@ $('.catalog').dcAccordion({
     speed: 300
 });
 
+function showCart(cart){
+    "use strict"
+	$('#cart .modal-body').html(cart);
+    $('#cart').modal();
+}
+
+function getCart(){
+    "use strict"
+    $.ajax({
+        url: '/cart/show',
+        type: 'GET',
+        success: function(res){
+            if(!res) alert('Ошибка при отображении корзины!');
+            //console.log(res);
+            showCart(res);
+        },
+        error: function(){
+            alert('Error!');
+        }
+    });
+    return false;
+}
+
+$('#cart .modal-body').on('click', '.del-item', function () {
+    "use strict"
+    var id = $(this).data('id');
+    $.ajax({
+        url: '/cart/del-item',
+        data: {id: id},
+        type: 'GET',
+        success: function(res){
+            if(!res) alert('Ошибка при удалении товара из корзины!');
+            //console.log(res);
+            showCart(res);
+        },
+        error: function(){
+            alert('Error!');
+        }
+    });
+});
+
+function clearCart(){
+    "use strict"
+    $.ajax({
+        url: '/cart/clear',
+        type: 'GET',
+        success: function(res){
+            if(!res) alert('Ошибка!');
+            //console.log(res);
+            showCart(res);
+        },
+        error: function(){
+            alert('Error!');
+        }
+    });
+}
+
+$('.add-to-cart').on('click', function (e) {
+    "use strict"
+    e.preventDefault();
+    var id = $(this).data('id'),
+        qty = $('#qty').val();
+    $.ajax({
+        url: '/cart/add',
+        data: {id: id, qty: qty},
+        type: 'GET',
+        success: function(res){
+            if(!res) alert('Ошибка при добавлении товара в корзину!');
+            showCart(res);
+        },
+        error: function(){
+            alert('Error!');
+        }
+    });
+});
+
 	var RGBChange;
 	RGBChange = function() {
 		"use strict"

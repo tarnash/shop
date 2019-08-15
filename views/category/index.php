@@ -125,9 +125,9 @@ use \yii\helpers\Url;
                                         <a href="<?= Url::to(['product/view', 'name' => strtolower($hit->category->name), 'id' => $hit->id])?>" title="<?= $hit->name ?>">
                                             <p><?= $hit->name ?></p>
                                         </a>
-                                        <a href="<?= Url::to(['cart/add', 'id' => $hit->id])?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                    </div>
-                                    <?php if (!empty($hit->new)):?>
+                                        <a href="<?= Url::to(['cart/add', 'id' => $hit->id])?>" data-id="<?= $hit->id?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                </div>
+                                <?php if (!empty($hit->new)):?>
                                         <?= Html::img('@web/images/home/new.png', ['alt' => 'Новинка!', 'class' => 'new'])?>
                                     <?php endif;?>
                                     <?php if (!empty($hit->sale)):?>
