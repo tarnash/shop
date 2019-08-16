@@ -65,7 +65,7 @@ class CartController extends AppController
                 Yii::$app->session->setFlash('success', 'Ваш заказ принят.');
 
                 //отправка EMAIL админу и клиенту
-                $this->sendEmail(Yii::$app->params['senderEmail'], Yii::$app->params['senderName'], Yii::$app->params['adminEmail'], $order->email, $order->id);
+                $this->sendEmail(Yii::$app->params['senderEmail'], Yii::$app->params['senderName'], Yii::$app->params['adminEmail'], $order->email, $order->id, $session);
 
                 $session->remove('cart');
                 $session->remove('cart.qty');
@@ -100,7 +100,7 @@ class CartController extends AppController
         }
     }
 
-    protected function sendEmail($senderEmail, $senderName, $adminEmail, $clientEmail, $orderId)
+    protected function sendEmail($senderEmail, $senderName, $adminEmail, $clientEmail, $orderId, $session)
     {
         //отправка EMAIL админу
         Yii::$app->mailer->compose('order', compact('session'))
