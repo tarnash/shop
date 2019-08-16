@@ -13,9 +13,6 @@ use Yii;
 
 class MenuWidget extends Widget
 {
-    const LIST = 'list';
-    const SELECT = 'select';
-
     public $tpl;
     public $data;
     public $tree;
@@ -26,7 +23,7 @@ class MenuWidget extends Widget
     {
         parent::init();
         if( $this->tpl === null ){
-            $this->tpl = self::LIST;
+            $this->tpl = 'list';
         }
         $this->tpl .= '.php';
     }
@@ -34,7 +31,7 @@ class MenuWidget extends Widget
     public function run()
     {
         // get cache
-        if($this->tpl == self::LIST . '.php'){
+        if($this->tpl == 'list.php'){
             $menu = Yii::$app->cache->get('menu');
             if($menu) return $menu;
         }
@@ -42,8 +39,8 @@ class MenuWidget extends Widget
         $this->tree = $this->getTree();
         $this->menuHtml = $this->getMenuHtml($this->tree);
         // set cache
-        if($this->tpl == self::LIST . '.php'){
-            Yii::$app->cache->set('menu', $this->menuHtml, 60);
+        if($this->tpl == 'list.php'){
+            Yii::$app->cache->set('menu', $this->menuHtml, 60*60*24);
         }
         return $this->menuHtml;
     }

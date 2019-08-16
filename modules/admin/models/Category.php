@@ -2,6 +2,8 @@
 
 namespace app\modules\admin\models;
 
+use app\components\CashBehavior;
+use app\components\DeleteCashBehavior;
 use Yii;
 
 /**
@@ -21,6 +23,14 @@ class Category extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'category';
+    }
+
+    public function behaviors()
+    {
+        //очистка кеша катигорий при редактировании
+        return [
+            'deleteCashBehavior' => DeleteCashBehavior::class,
+        ];
     }
 
     public function getCategory()

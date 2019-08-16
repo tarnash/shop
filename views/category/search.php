@@ -18,7 +18,7 @@ use \yii\helpers\Url;
                 <div class="left-sidebar">
                     <h2>Category</h2>
                     <ul class="catalog category-products">
-                        <?= MenuWidget::widget(['tpl' => MenuWidget::LIST]) ?>
+                        <?= MenuWidget::widget(['tpl' => 'list']) ?>
                     </ul><!--category_menu-->
 
                     <div class="brands_products"><!--brands_products-->
