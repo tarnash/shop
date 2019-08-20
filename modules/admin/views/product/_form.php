@@ -49,7 +49,7 @@ mihaildev\elfinder\Assets::noConflict($this);
     <?= $form->field($model, 'in_stock')->checkbox([ '0', '1']) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
