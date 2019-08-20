@@ -2,7 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+use kartik\datetime\DateTimePicker;
+use yii\db\Expression;
 /* @var $this yii\web\View */
 /* @var $model app\modules\admin\models\Order */
 /* @var $form yii\widgets\ActiveForm */
@@ -12,9 +13,29 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
+    <?= $form->field($model, 'created_at')->widget(DateTimePicker::class,[
+        'language' => 'ru',
+        'name' => 'datetime_10',
+        'options' => ['placeholder' => 'Автоматическая установка даты при сохранении'],
 
-    <?= $form->field($model, 'updated_at')->textInput() ?>
+        'pluginOptions' => [
+            'format' => 'yyyy-mm-dd H:ii:s',
+
+            'todayHighlight' => true
+        ]
+    ]) ?>
+
+    <?= $form->field($model, 'updated_at')->widget(DateTimePicker::class,[
+            'language' => 'ru',
+            'name' => 'datetime_10',
+            'options' => ['placeholder' => 'Автоматическая установка даты при сохранении'],
+
+            'pluginOptions' => [
+                'format' => 'yyyy-mm-dd H:ii:s',
+
+                'todayHighlight' => true
+            ]
+    ]) ?>
 
     <?= $form->field($model, 'qty')->textInput() ?>
 

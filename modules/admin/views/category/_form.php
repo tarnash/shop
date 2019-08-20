@@ -19,7 +19,7 @@ use \app\components\MenuWidget;
         <label class="control-label" for="category-parent_id">Родительская категория</label>
         <select id="category-parent_id" class="form-control" name="Category[parent_id]" aria-invalid="false">
             <option value="0">Самостоятельная категория</option>
-            <?= MenuWidget::widget(['tpl' => 'select', 'model' => $model])?>
+            <?= MenuWidget::widget(['tpl' => 'select_category', 'model' => $model])?>
         </select>
     </div>
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>

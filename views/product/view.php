@@ -114,6 +114,8 @@ use \yii\helpers\Url;
                             <?php if (!empty($product->sale)):?>
                                 <?= Html::img('@web/images/home/sale.png', ['alt' => 'Распродажа!', 'class' => 'new'])?>
                             <?php endif;?>
+                            <br>
+                            <?= $product->content ?>
                         </div><!--/product-information-->
                     </div>
                 </div><!--/product-details-->
