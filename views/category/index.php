@@ -114,12 +114,13 @@ use \yii\helpers\Url;
                     <?php if (!empty($hits)):?>
                         <h2 class="title text-center">Хит продаж</h2>
                         <?php foreach($hits as $hit) :?>
+                            <?php $mainImg = $hit->getImage(); ?>
                             <div class="col-sm-4">
                             <div class="product-image-wrapper">
                                 <div class="single-products">
                                     <div class="productinfo text-center">
                                         <a href="<?= Url::to(['product/view', 'name' => strtolower($hit->category->name), 'id' => $hit->id])?>">
-                                            <?= Html::img('@web/images/products/' . $hit->img, ['alt' => $hit->name])?>
+                                            <?= Html::img($mainImg->getUrl(), ['alt' => $hit->name])?>
                                         </a>
                                         <h2>$<?= $hit->price ?></h2>
                                         <a href="<?= Url::to(['product/view', 'name' => strtolower($hit->category->name), 'id' => $hit->id])?>" title="<?= $hit->name ?>">

@@ -17,7 +17,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Product', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
@@ -33,10 +32,17 @@ $this->params['breadcrumbs'][] = $this->title;
             //'category_id',
             'name',
             //'content:text',
-            'price',
             //'keywords',
             //'description',
-            //'img',
+            [
+                'attribute' => 'image',
+                'value' => function($data){
+                    return "<img src='{$data->getImage()->getUrl('x50')}'>";
+                },
+                'format' => 'html',
+            ],
+            //'image',
+            'price',
             [
                 'attribute' => 'hit',
                 'value' => function($data){

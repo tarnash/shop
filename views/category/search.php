@@ -56,12 +56,13 @@ use \yii\helpers\Url;
                     <h2 class="title text-center">Поиск по запросу: <?= $q ?></h2>
                     <?php if (!empty($products)):?>
                         <?php foreach($products as $product) :?>
+                            <?php $mainImg = $product->getImage(); ?>
                             <div class="col-sm-4">
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
                                             <a href="<?= Url::to(['product/view', 'name' => strtolower($category->name), 'id' => $product->id])?>">
-                                                <?= Html::img('@web/images/products/' . $product->img, ['alt' => $product->name])?>
+                                                <?= Html::img($mainImg->getUrl(), ['alt' => $product->name])?>
                                             </a>
                                             <h2>$<?= $product->price ?></h2>
                                             <a href="<?= Url::to(['product/view', 'name' => strtolower($category->name), 'id' => $product->id])?>" title="<?= $product->name ?>">
